@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>موقع المحاضرات</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Cairo', sans-serif;
+            direction: rtl; /* For Arabic text direction */
+            margin: 0;
+            padding: 0;
+            background-color: #f3f4f6; /* Light gray background */
+            color: #333; /* Dark text for better contrast */
+        }
+
+        header {
+            background-color: #007bff; /* Primary color */
+            color: white;
+            text-align: center;
+            padding: 20px 0;
+            font-size: 2em; /* Larger font size */
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .container {
+            display: flex;
+            justify-content: space-between;
+            margin: 20px;
+            flex-wrap: wrap; /* Allow items to wrap on small screens */
+        }
+
+        .left {
+            flex: 2;
+            padding: 20px;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            margin-right: 20px;
+            min-width: 300px; /* Set minimum width */
+        }
+
+        .right {
+            flex: 1;
+            padding: 20px;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            min-width: 250px; /* Set minimum width */
+        }
+
+        h3 {
+            color: #007bff; /* Consistent header color */
+            margin-bottom: 15px;
+            text-align: center; /* Center align header */
+        }
+
+        #lectureList {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        #lectureList li {
+            background: #e9ecef; /* Light background for lecture items */
+            border-radius: 5px;
+            margin: 10px 0;
+            cursor: pointer;
+            transition: background 0.3s, transform 0.2s; /* Smooth transitions */
+            padding: 15px;
+            display: flex; /* Flex for content alignment */
+            align-items: center; /* Center align items vertically */
+            flex-direction: column;
+        }
+
+        #lectureList li:hover {
+            background: #d1d5db; /* Darker background on hover */
+            transform: scale(1.02); /* Slight scaling effect */
+        }
+
+        .sub-lecture {
+            margin-left: 20px; /* Indent sub-lectures */
+            font-size: 0.9em; /* Smaller font for sub-lectures */
+            color: #555;
+            display: none; /* Initially hide sub-lectures */
+        }
+
+        .pagination {
+            text-align: center;
+            margin: 20px 0;
+        }
+
+        .pagination button {
+            margin: 0 5px;
+            padding: 10px 15px;
+            cursor: pointer;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            transition: background-color 0.3s, transform 0.2s;
+        }
+
+        .pagination button:hover {
+            background-color: #0056b3;
+            transform: scale(1.05); /* Slight scaling effect */
+        }
+
+        .pagination button:disabled {
+            background-color: #cccccc;
+            cursor: not-allowed;
+        }
+
+        footer {
+            text-align: center;
+            padding: 10px;
+            background-color: #007bff;
+            color: white;
+            position: relative;
+            bottom: 0;
+            width: 100%;
+            margin-top: 20px;
+            box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        #videoDescription {
+            margin-top: 15px;
+            font-size: 1em;
+            color: #333;
+            padding: 10px;
+            background-color: #f0f0f0;
+            border-radius: 5px;
+        }
+
+        #lecturerName {
+            margin-top: 5px;
+            font-size: 0.9em;
+            color: #007bff;
+        }
+
+        .author {
+            margin-top: 5px;
+            font-size: 0.9em;
+            color: #007bff;
+            cursor: pointer;
+            text-decoration: underline;
+        }
+
+        .author:hover {
+            color: #0056b3; /* Darker color on hover */
+        }
+
+        .toggle-sub-lectures {
+            margin-left: 10px;
+            cursor: pointer;
+            color: #007bff;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        موقع المحاضرات
+    </header>
+    
+    <section class="lectures">
+        <div class="container">
+            <div class="left">
+                <iframe id="videoPlayer" width="100%" height="auto" frameborder="0" allowfullscreen autoplay></iframe>
+                <p id="videoDescription">اختر محاضرة من القائمة.</p>
+                <p id="lecturerName">اسم المحاضر</p>
+            </div>
+            <div class="right">
+                <h3>قائمة المحاضرات</h3>
+                <ul id="lectureList"></ul>
+            </div>
+        </div>
+        <div class="pagination">
+            <button id="prevPage" disabled>السابق</button>
+            <button id="nextPage">التالي</button>
+        </div>
+    </section>
+
+    <footer>
+        جميع الحقوق محفوظة © 2024
+    </footer>
+    
+    <script>
+        let currentPage = 1;
+        const itemsPerPage = 25; // Number of items per page
+        const totalPages = 36; // Set total pages based on your API
+        const lectureList = document.getElementById("lectureList");
+        const videoPlayer = document.getElementById("videoPlayer");
+        const videoDescription = document.getElementById("videoDescription");
+        const lecturerName = document.getElementById("lecturerName"); // عنصر اسم المحاضر
+        const prevPageButton = document.getElementById("prevPage");
+        const nextPageButton = document.getElementById("nextPage");
+        const baseUrl = "https://api3.islamhouse.com/v3/paV29H2gm56kvLPy/main/videos/ar/ar/";
+
+        function loadLectures(page) {
+            const apiUrl = `${baseUrl}${page}/${itemsPerPage}/json`;
+            fetch(apiUrl)
+                .then(response => response.json())
+                .then(data => {
+                    const items = data.data; // Access the data array
+                    lectureList.innerHTML = ''; // Clear previous lectures
+                    items.forEach(item => {
+                        const listItem = document.createElement("li");
+                        listItem.textContent = item.title; // Get the title of the lecture
+
+                        // Create a toggle icon for sub-lectures
+                        if (item.attachments && item.attachments.length > 0) {
+                            const toggleIcon = document.createElement("span");
+                            toggleIcon.textContent = "▼"; // Toggle icon
+                            toggleIcon.className = "toggle-sub-lectures";
+                            toggleIcon.onclick = (event) => {
+                                event.stopPropagation(); // Prevent the click from bubbling up
+                                const subLectureList = listItem.querySelector(".sub-lecture");
+                                if (subLectureList) {
+                                    subLectureList.style.display = subLectureList.style.display === "none" ? "block" : "none"; // Toggle visibility
+                                }
+                            };
+                            listItem.appendChild(toggleIcon); // Add the toggle icon to the list item
+
+                            // Create a sub-lecture list
+                            const subLectureList = document.createElement("ul");
+                            subLectureList.className = "sub-lecture";
+                            subLectureList.style.display = "none"; // Initially hide sub-lectures
+
+                            item.attachments.forEach(subItem => {
+                                const subListItem = document.createElement("li");
+                                subListItem.textContent = subItem.description; // Get the description of the sub-lecture
+                                subListItem.onclick = (event) => {
+                                    event.stopPropagation(); // Prevent the click from bubbling up
+                                    videoPlayer.src = subItem.url; // Get the video URL
+                                    videoPlayer.autoplay = true; // Start playing the video
+                                    videoDescription.textContent = subItem.description || "لا توجد وصف متاحة"; // Update description
+                                    lecturerName.textContent = item.prepared_by.length > 0 ? `المحاضر: ${item.prepared_by[0].title}` : "المحاضر غير معروف"; // Update lecturer name
+                                };
+                                subLectureList.appendChild(subListItem); // Add the sub-lecture item to the sub-lecture list
+                            });
+                            listItem.appendChild(subLectureList); // Add the sub-lecture list to the list item
+                        }
+
+                        // On lecture click
+                        listItem.onclick = () => {
+                            videoPlayer.src = item.url; // Get the video URL
+                            videoPlayer.autoplay = true; // Start playing the video
+                            videoDescription.textContent = item.description || "لا توجد وصف متاحة"; // Update description
+                            lecturerName.textContent = item.prepared_by.length > 0 ? `المحاضر: ${item.prepared_by[0].title}` : "المحاضر غير معروف"; // Update lecturer name
+                        };
+
+                        lectureList.appendChild(listItem); // Add the list item to the lecture list
+                    });
+
+                    // Update pagination buttons
+                    prevPageButton.disabled = page === 1;
+                    nextPageButton.disabled = page === totalPages;
+                })
+                .catch(error => console.error("Error fetching lectures:", error));
+        }
+
+        prevPageButton.onclick = () => {
+            if (currentPage > 1) {
+                currentPage--;
+                loadLectures(currentPage);
+            }
+        };
+
+        nextPageButton.onclick = () => {
+            if (currentPage < totalPages) {
+                currentPage++;
+                loadLectures(currentPage);
+            }
+        };
+
+        // Load the first page of lectures on page load
+        loadLectures(currentPage);
+    </script>
+</body>
+</html>

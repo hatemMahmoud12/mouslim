@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>موقع الخطب</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            direction: rtl;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            background-color: #4CAF50;
+            color: white;
+            text-align: center;
+            padding: 1rem;
+        }
+        .container {
+            width: 90%;
+            margin: 20px auto;
+        }
+        .search-bar {
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        .search-bar input {
+            padding: 10px;
+            width: 70%;
+            font-size: 16px;
+        }
+        .khutbah {
+            background-color: white;
+            padding: 15px;
+            margin-bottom: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .khutbah h3 {
+            margin: 0 0 10px 0;
+            color: #333;
+        }
+        .khutbah p {
+            margin: 5px 0;
+            color: #666;
+        }
+        .navigation {
+            text-align: center;
+            margin-top: 20px;
+        }
+        .navigation button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            margin: 5px;
+            cursor: pointer;
+        }
+        .navigation button:disabled {
+            background-color: grey;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>موقع الخطب</h1>
+</header>
+
+<div class="container">
+    <div class="search-bar">
+        <input type="text" id="search-input" placeholder="ابحث عن خطبة..." />
+        <button onclick="searchKhutbah()">بحث</button>
+    </div>
+    <div id="khutbah-list">
+        <!-- الخطب ستعرض هنا -->
+    </div>
+    <div class="navigation">
+        <button id="prev-btn" onclick="loadKhutbahs(prevPage)" disabled>السابق</button>
+        <button id="next-btn" onclick="loadKhutbahs(nextPage)">التالي</button>
+    </div>
+</div>
+
+<script>
+    let currentPage = 1;
+    let nextPage = "";
+    let prevPage = "";
+
+    document.addEventListener("DOMContentLoaded", function() {
+        loadKhutbahs(`https://api3.islamhouse.com/v3/paV29H2gm56kvLPy/main/khotab/ar/ar/${currentPage}/25/json`);
+    });
+
+    function loadKhutbahs(url) {
+        fetch(url)
+            .then(response => response.json())
+            .then(data => {
+                displayKhutbahs(data.data);
+                nextPage = data.links.next || "";
+                prevPage = data.links.prev || "";
+                document.getElementById('prev-btn').disabled = !prevPage;
+                document.getElementById('next-btn').disabled = !nextPage;
+            })
+            .catch(error => console.log(error));
+    }
+
+    function displayKhutbahs(khutbahs) {
+        const khutbahList = document.getElementById('khutbah-list');
+        khutbahList.innerHTML = ''; // Clear previous khutbahs
+
+        if (khutbahs.length === 0) {
+            khutbahList.innerHTML = '<p>لا توجد نتائج مطابقة.</p>';
+            return;
+        }
+
+        khutbahs.forEach(khutbah => {
+            const khutbahDiv = document.createElement('div');
+            khutbahDiv.className = 'khutbah';
+            khutbahDiv.innerHTML = `
+                <h3>${khutbah.title}</h3>
+                <p>${khutbah.description || 'لا يوجد وصف'}</p>
+                <a href="${khutbah.attachments[0]?.url}" target="_blank">تحميل PDF</a>
+            `;
+            khutbahList.appendChild(khutbahDiv);
+        });
+    }
+
+    function searchKhutbah() {
+        const query = document.getElementById('search-input').value.trim();
+        if (query) {
+            const searchUrl = `https://api3.islamhouse.com/v3/paV29H2gm56kvLPy/main/khotab/ar/ar/1/25/json?search=${encodeURIComponent(query)}`;
+            
+            fetch(searchUrl)
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('Network response was not ok');
+                    }
+                    return response.json();
+                })
+                .then(data => {
+                    if (data.data.length === 0) {
+                        displayKhutbahs([]); // لا توجد نتائج
+                    } else {
+                        displayKhutbahs(data.data);
+                    }
+                })
+                .catch(error => {
+                    console.error('Error fetching data:', error);
+                    alert('حدث خطأ في البحث. يرجى المحاولة لاحقًا.');
+                });
+        } else {
+            alert("يرجى إدخال نص للبحث.");
+        }
+    }
+</script>
+
+</body>
+</html>

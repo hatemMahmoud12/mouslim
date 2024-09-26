@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>معلومات المحاضر</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            direction: rtl; /* For Arabic text direction */
+            padding: 20px;
+            background-color: #f9f9f9;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: auto;
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+
+        .author-info {
+            margin-top: 20px;
+            text-align: center;
+        }
+
+        .author-info img {
+            max-width: 150px;
+            border-radius: 50%;
+        }
+
+        .author-description {
+            margin-top: 10px;
+            line-height: 1.6;
+            color: #555;
+        }
+
+        a {
+            display: inline-block;
+            margin-top: 20px;
+            text-align: center;
+            padding: 10px 15px;
+            color: white;
+            background-color: #007bff;
+            text-decoration: none;
+            border-radius: 5px;
+        }
+
+        a:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>معلومات المحاضر</h1>
+        <div class="author-info">
+            <img id="authorImage" src="" alt="صورة المحاضر">
+            <h2 id="authorName">اسم المحاضر</h2>
+            <p class="author-description" id="authorDescription">وصف المحاضر هنا.</p>
+            <a href="#" id="authorLink">زيارة صفحة المحاضر</a>
+        </div>
+    </div>
+
+    <script>
+        // الحصول على معرّف المحاضر من الـ URL
+        const urlParams = new URLSearchParams(window.location.search);
+        const authorId = urlParams.get('id'); // استبدل 'id' بالمفتاح الذي تستخدمه لتمرير المعرف
+
+        // إذا كان هناك معرّف، استدعاء API لتحميل بيانات المحاضر
+        if (authorId) {
+            const apiUrl = `https://api3.islamhouse.com/v3/paV29H2gm56kvLPy/main/get-author/${authorId}/ar/json`;
+            
+            fetch(apiUrl)
+                .then(response => response.json())
+                .then(data => {
+                    const author = data; // الحصول على بيانات المحاضر
+                    document.getElementById("authorName").textContent = author.title || "لا توجد معلومات متاحة";
+                    document.getElementById("authorDescription").textContent = author.description || "لا توجد معلومات متاحة";
+                    document.getElementById("authorImage").src = author.image || "default-image-url.jpg"; // استخدام صورة افتراضية إذا لم تكن متاحة
+                    document.getElementById("authorLink").href = author.api_url || "#"; // رابط صفحة المحاضر
+                })
+                .catch(error => console.error("Error fetching author data:", error));
+        } else {
+            document.getElementById("authorDescription").textContent = "لا يوجد معرّف للمحاضر.";
+        }
+    </script>
+</body>
+</html>

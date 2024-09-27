@@ -283,7 +283,7 @@ section h3::before
   left: 0;
   background-color: rgba(111, 78, 58, .8);
   width: 100%;
-  height: 100%;
+  height: 100vh;
   display: grid;
   align-items: flex-end;
   overflow: hidden;

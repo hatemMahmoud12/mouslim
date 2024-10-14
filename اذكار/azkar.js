@@ -1,3 +1,34 @@
+// الثوابت للعناصر الثابتة
+let fixedNav = document.querySelector('.header'),
+    scrollBtn = document.querySelector('.scrollBtn');
+
+// إضافة أحداث التمرير للتنقل بين الأجزاء
+window.addEventListener("scroll", () => {
+    fixedNav.classList.toggle('active', window.scrollY > 100);
+    scrollBtn.classList.toggle('active', window.scrollY > 500);
+});
+
+// ربط الأقسام بالرابط
+let sections = document.querySelectorAll("section"),
+    links = document.querySelectorAll('.header ul li');
+
+links.forEach(link => {
+    link.addEventListener('click', () => {
+        document.querySelector('.header ul li.active').classList.remove('active');
+        link.classList.add('active');
+        let target = link.dataset.filter;
+
+        sections.forEach(section => {
+            if (section.classList.contains(target)) {
+                section.scrollIntoView({
+                    behavior: "smooth"
+                });
+            }
+        });
+    });
+});
+
+
 document.addEventListener('DOMContentLoaded', function() {
   const azkarList = document.getElementById('azkarList').querySelector('.card-container');
 

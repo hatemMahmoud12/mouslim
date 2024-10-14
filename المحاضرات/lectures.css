@@ -1,0 +1,239 @@
+body {
+    font-family: 'Cairo', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+}
+
+*{
+    scroll-behavior: smooth;
+}
+
+h3 {
+    text-align: center;
+    color: #333;
+    margin-top: 20px;
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 20px;
+}
+
+/*** Main Section ***/
+.main .container {
+    min-height: 70vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.main .title {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    flex-direction: column;
+    text-align: center;
+}
+
+.main .title h2 {
+    font-size: 60px;
+}
+
+.title .btn {
+    color: white;
+}
+
+#searchBox {
+    outline: none;
+    border: none;
+    width: 100%;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1), 0 4px 10px rgba(0, 0, 0, 0.1);
+    border-bottom: 1px solid #ddd;
+    transition: background-color 0.3s;
+    text-align: right;
+    margin: 10px 0;
+    display: none;
+}
+
+.lectures-container {
+    display: flex;
+    width: 100%;
+    border-radius: 10px;
+    padding: 10px;
+}
+
+/* الجهة اليمنى */
+.right {
+    flex: 1;
+    padding: 10px;
+    overflow-y: auto; /* Allows scrolling if there are many main lectures */
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+/* الجهة اليسرى مع خاصية sticky */
+.left {
+    flex: 2;
+    padding: 10px;
+    display: flex;
+    flex-direction: column; /* Arrange children vertically */
+    border-radius: 10px;
+    margin: 0 10px;
+    position: sticky; /* لجعل القسم ثابت */
+    top: 20px; /* تحديد المكان الثابت */
+}
+
+#mainLectureList,
+#subLectureList {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+#mainLectureList li,
+#subLectureList li {
+    padding: 20px;
+    border-radius: 10px;
+    border-bottom: 1px solid #ddd;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    text-align: right;
+    margin: 10px 0;
+    background-color: #6F4E37;
+    color: white;
+}
+
+#mainLectureList li:hover,
+#subLectureList li:hover {
+    background-color: #A67B5B;
+}
+
+#loadMoreButton{
+    background: #f0f0f0;
+    outline: none;
+    border-radius: 10px;
+    padding: 8px 20px;
+    cursor: pointer;
+    border: 1px solid #ddd;
+    
+}
+
+#loadMoreButton:hover {
+    background-color: #e0e0e0;
+}
+
+video {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+    margin-bottom: 40px; /* Spacing below video */
+}
+
+#subLectureList {
+    list-style-type: decimal;
+    direction: rtl;
+    margin-top: 10px;
+}
+
+#subLectureList li::marker {
+    font-size: 18px;
+    color: #333;
+}
+
+
+/* أسلوب التقسيم لشاشات الكمبيوتر */
+.lectures-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+/* تنسيق الفيديو */
+#videoPlayer {
+    width: 100%;
+    height: auto;
+    margin-bottom: 10px;
+}
+
+/* تنسيق مربع البحث */
+#searchBox {
+    width: 100%;
+    padding: 20px;
+    margin-bottom: 10px;
+}
+
+/* أسلوب العرض لشاشات الجوال */
+@media (max-width: 768px) {
+    .lectures-container {
+        flex-direction: column;
+    }
+
+    /* الفيديو في أعلى الصفحة */
+    .left {
+        order: 1;
+        width: 100%;
+        margin: 0;
+        position: relative; /* لجعلها غير ثابتة على الشاشات الصغيرة */
+    }
+
+    /* قائمة الفيديوهات الفرعية أسفل الفيديو */
+    #subLectureList {
+        margin-top: 10px;
+    }
+
+    /* المحاضرات الرئيسية أسفل القائمة الفرعية */
+    .right {
+        order: 2;
+        width: 100%;
+        margin-top: 20px;
+    }
+}
+
+.subLectureDropdown {
+    margin-top: 10px;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    overflow: hidden; /* لحصر المحتوى */
+}
+
+.dropdown-header {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+    background-color: #f0f0f0;
+    cursor: pointer;
+}
+
+.dropdown-header:hover {
+    background-color: #e0e0e0;
+}
+
+#subLectureList.hidden {
+    display: none; /* إخفاء القائمة عند الحاجة */
+}
+
+#subLectureList {
+    padding: 0;
+    margin: 0;
+    list-style-type: none;
+}
+
+#subLectureList li {
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+    text-align: right;
+    cursor: pointer;
+}
+
+#subLectureList li:hover {
+    background-color: #f9f9f9;
+}
+

@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>الإيمان | كتب</title>
+    <!-- Fonts Links Are in Description -->
+    <!-- thuluth decorated Font-->
+    <!-- <link rel="stylesheet" type="text/css" href="https://www.fontstatic.com/f=thuluth-decorated" /> -->
+    <!-- Cairo Font-->
+    <!-- <link rel="stylesheet" type="text/css" href="https://www.fontstatic.com/f=cairo-bold" /> -->
+    <!-- Font AWesome -->
+    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css"/> -->
+    <!-- Main Style -->
+    <link rel="stylesheet" href="../fonts/all.min.css">
+    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="./books.css">
+
+    	<!-- Font Awesome -->
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+	<!-- Favicon -->
+
+	<link rel="shortcut icon" href="/images/logo.png" type="image/x-icon">
+	<link rel="manifest" href="assets/favicon/site.webmanifest">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css">
+
+
+</head>
+<body>
+        
+    <header class="header">
+        <div class="container">
+            <div class="logo">
+                الإيمان
+         </div>
+            <ul>
+             <li><a href="../index.html">الصَّفْحَةِ الرَّئِيسِيَّة</a></li>
+             <li><a href="../المحاضرات/lectures.html">مرئيات</a></li>
+             <li><a class="active" href="../كتب/كتب.html">كتب</a></li>
+             <li><a href="../اذكار/azkar.html">الأذكار</a></li>
+            </ul>
+            <div class="bars">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+    </header>
+<!-- Main Section -->
+<section class="main">
+    <div class="container">
+        <div class="title">
+            <h2>
+كتب اسلاميه                 
+            </h2>
+            <a href="#book-list">
+            <button class="btn">
+                 إبدأ التصفح
+                 <i class="fas fa-caret-left"></i>
+            </button>
+            </a>
+        </div>   
+    </div>
+</section>
+
+    <section class="books">
+        <div class="search">
+            <input type="text" id="searchInput" placeholder="ابحث عن كتاب...">
+            <button id="searchButton">بحث</button>
+        </div>  
+
+    <div class="loading-spinner" id="loading-spinner">
+        <img src="https://media0.giphy.com/media/3oEjI6SIIHBdRxXI40/giphy.gif?cid=ecf05e47zm5hmv2txtirowv1gn851wmgaur2ydhfk2vylin6&ep=v1_gifs_related&rid=giphy.gif&ct=g" alt="Loading...">
+    </div>
+
+    <main id="book-list">
+        <!-- سيتم ملء الكتب هنا بواسطة JavaScript -->
+    </main>
+    <div class="pagination">
+        <button id="first-page">الأولى</button>
+        <button class="disapled" id="prev-page">السابقة</button>
+        <button id="next-page">التالية</button>
+        <button id="last-page">الأخيرة</button>
+    </div>
+    </section>
+
+    <script src="./books.js"></script>
+    
+    
+</body>
+</html>

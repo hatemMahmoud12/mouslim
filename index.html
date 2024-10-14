@@ -1,0 +1,282 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>الإيمان</title>
+    <!-- Fonts Links Are in Description -->
+    <!-- thuluth decorated Font-->
+    <!-- <link rel="stylesheet" type="text/css" href="https://www.fontstatic.com/f=thuluth-decorated" /> -->
+    <!-- Cairo Font-->
+    <!-- <link rel="stylesheet" type="text/css" href="https://www.fontstatic.com/f=cairo-bold" /> -->
+    <!-- Font AWesome -->
+    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css"/> -->
+    <!-- Main Style -->
+    <link rel="stylesheet" href="./fonts/all.min.css">
+    <link rel="stylesheet" href="style.css">
+
+    	<!-- Font Awesome -->
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+	<!-- Favicon -->
+
+	<link rel="shortcut icon" href="/images/logo.png" type="image/x-icon">
+	<link rel="manifest" href="assets/favicon/site.webmanifest">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css">
+</head>
+<body>
+       
+   <header class="header">
+       <div class="container">
+           <div class="logo">
+            الإيمان
+        </div>
+           <ul>
+            <li class="active"><a class="active" href="./index.html">الصفحه الرئيسيه</a></li>
+            <li><a href="#hadith">أحاديث</a></li>
+            <li><a href="./المحاضرات/lectures.html">مرئيات</a></li>
+            <li><a href="./كتب/كتب.html">كتب</a></li>
+            <li><a href="./اذكار/azkar.html">الأذكار</a></li>
+            <li><a href="#footer">الأذاعه</a></li>
+           </ul>
+           <div class="bars">
+               <i class="fas fa-bars"></i>
+           </div>
+       </div>
+   </header>
+
+   <!-- Main Section -->
+    
+   <section class="main">
+       <div class="container">
+           <div class="title">
+               <h2 class="greeting">
+                    مرحبا بك في 
+                    <br>
+                    موقع الايمان  
+                    
+               </h2>
+               <p>هذا الموقع صدقه جاريه علي روح الحاج فوزي فرحات</p>
+
+               <button class="btn">
+                    إبدأ التصفح
+                    <i class="fas fa-caret-left"></i>
+               </button>
+
+               <div id="prayerTimes" class="card prayer-times">
+                <div class="salah">
+                    <h2>الفجر</h2>
+                    <p  id="fajr">0:00</p>
+                </div>
+                <div class="salah">
+                    <h2>الظهر</h2>
+                    <p  id="dhuhr">0:00</p>
+                </div>
+                <div class="salah">
+                    <h2>العصر</h2>
+                    <p id="asr">0:00</p>
+                </div>
+                <div class="salah">
+                    <h2>المغرب</h2>
+                    <p id="maghrib">0:00</p>
+                </div>
+                <div class="salah">
+                    <h2>العشاء</h2>
+                    <p id="isha">0:00</p>
+                </div>
+
+                
+               </div>
+           </div>   
+       </div>
+   </section>
+
+       <!-- pages -->
+       <section class="pages">
+        <div class="container">
+          <div class="cards">
+
+            <a href="https://quran.ksu.edu.sa/index.php?ui=1#aya=1_1&m=hafs&qaree=husary&trans=ar_mu">
+              <div class="card" id="pc">
+                  <img src="./images/quran-logo.png" alt="">
+              </div>
+              </a>
+
+            <a href="https://quran.ksu.edu.sa/m.php#aya=1_1">
+              <div class="card" id="mobile">
+                  <img src="./images/quran-logo.png" alt="">
+              </div>
+              </a>
+
+              <a href="./كتب/كتب.html">
+                <div class="card">
+                    <img src="./images/book.png" alt="">
+                </div>
+              </a>
+
+              <a href="./اذكار/azkar.html">
+              <div class="card">
+                  <img src="./images/azkar.png" alt="">
+              </div>
+              </a>
+
+              <a href="./المحاضرات/lectures.html">
+              <div class="card">
+                  <img src="./images/videos.png" alt="">
+              </div>
+              </a>
+          </div>
+        </div>
+  
+       </section>
+
+    <!-- modal -->
+
+        <div class="modal__container" id="modal-container">
+            <div class="modal__content">
+                <div class="modal__close close-modal">
+                    <i class='bx bx-x'></i>
+                </div>
+                <h2 class="arabic-ayah"></h2>
+                <span class="sura-info">
+               <span class="sura-name"></span> - <span class="ayah-number"></span> </span>
+    
+                <div class="buttons">
+                    <audio src="https://cdn.islamic.network/quran/audio/128/ar.minshawi/262.mp3"></audio> 
+                    <a href="#" class="btn-play">تشغيل</a>
+                    <a href="#" class="btn-generate">ايه اخري</a> 
+                </div>
+
+            </div>
+        </div>
+
+
+   <!--end Of Main Section -->
+   <!-- Hadith section -->
+   <section id="hadith" class="hadith">
+        <h3>أحاديث</h3>
+        <div class="container">   
+            <div id="hadith-container" class="hadithContainer">
+              
+            </div>
+            <div class="buttons">
+                <div id="prev-btn" class="prev">السابق</div>
+                <span class="midlle">
+                    <div id="num" class="number">1 / 300</div>
+
+                    <select id="book-select" class="books">
+                        <option value="muslim" selected>مسلم</option>
+                        <option value="bukhari">بخاري</option>
+                        <option value="abu-dawud">ابو داود</option>
+                        <option value="ahmad">احمد</option>
+                        <option value="ibnu-majah">ابن ماجه</option>
+                        <option value="malik">مالك</option>
+                        <option value="nasai">النسائي</option>
+                        <option value="tirmidzi">الترمزي</option>
+                        <option value="darimi">الدرمي</option>
+                    </select>                
+                </span>
+                <div id="next-btn" class="next">التالي</div>
+            </div>
+        </div>
+   </section>
+
+    <!-- End of Hadith section -->
+
+
+    <!-- Lectures Section -->
+    <section class="lectures">
+        <h3>مرئيات</h3>
+        <div class="container">
+            <div class="lectures-container">
+                <!-- الجهة اليمنى للمحاضرات الرئيسية والبحث -->
+                <div class="right">
+                    <ul id="mainLectureList"></ul>
+                    <a id="loadMoreButton" href="./المحاضرات/lectures.html" >إظهار المزيد</a> <!-- زر إظهار المزيد -->
+                </div>
+                <!-- الجهة اليسرى للفيديوهات وقائمة الفيديوهات الفرعية -->
+                <div class="left">
+                    <video id="videoPlayer" width="100%" height="auto" frameborder="0" allowfullscreen controls autoplay></video>
+                    <p id="videoDescription">اختر محاضرة من القائمة.</p>
+                    
+                    <div class="subLectureDropdown">
+                        <div class="dropdown-header" onclick="toggleSubLectureList()">
+                            <span>المحاضرات الفرعية</span>
+                            <span class="arrow" id="dropdownArrow">&#9662;</span> <!-- أيقونة السهم -->
+                        </div>
+                        <ul id="subLectureList" class="hidden"></ul> <!-- قائمة المحاضرات الفرعية -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- END oF Lectures Section -->
+
+
+    <!-- radio Section -->
+     <section id="radio" class="radio">
+        <h3>اذاعة الايمان</h3>
+
+        <div class="container">
+        <div class="player">
+         <div class="wrapper">
+           
+
+          <div class="info-wrapper">
+    
+            <img id="radioImage" src="https://i1.sndcdn.com/artworks-000663801097-wb0y31-t200x200.jpg">
+      
+            <div class="info">
+               <h1 id="radioName"></h1>
+              <p id="status">قيد التوقف</p>
+            </div>
+      
+            </div>
+  
+            <div class="controls">
+              <div class="prev btn" id="prevBtn">
+                <i class="fas fa-forward"></i>
+              </div>
+              <div class="play btn" id="playBtn">
+                <i class="fas fa-play"></i>      
+              </div>
+              <div class="next btn" id="nextBtn">
+                <i class="fas fa-backward"></i>
+              </div>
+            </div>
+
+
+
+        </div>   
+        </div> 
+      </div>
+
+     </section>
+    <!-- End OF radio Section -->  
+
+    <!-- Footer -->
+    <section id="footer" class="footer">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
+            <path  fill-opacity="1" d="M0,32L48,42.7C96,53,192,75,288,69.3C384,64,480,32,576,42.7C672,53,768,107,864,106.7C960,107,1056,53,1152,48C1248,43,1344,85,1392,106.7L1440,128L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path>
+        </svg>
+        <div class="social">
+            <a href="https://www.facebook.com/eliman.online/"><i class="fab fa-facebook"></i></a>
+            <a href="https://chat.whatsapp.com/DQfJEOg8VTZ391Jta2Y8x6"><i class="fab fa-whatsapp"></i></a>
+            <a href="https://chat.whatsapp.com/BwalEdOcaO0JW0XkCSSC7Y"><i class="fab fa-whatsapp"></i></a>
+            <a href="https://www.tiktok.com/@eliman.online"><i class="fab fa-tiktok"></i></a>
+        </div>
+        <span class="footer-text">صنع بواسطة <a href="https://www.facebook.com/hatembawady/">حاتم محمود❤</a></span>
+    </section>
+    <!-- End Footer -->
+    <!-- Scroll Top -->
+    <div class="scrollBtn">
+        <i class="fas fa-angle-double-up"></i>
+    </div>
+   <!-- Js File-->
+   <script src="./fonts/all.min.js"></script>
+   <script src="./main.js"></script>
+</body>

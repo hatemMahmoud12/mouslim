@@ -1,0 +1,161 @@
+:root{
+    --primary-color: #6F4E37;
+    --second-color: #A67B5B;
+    --third-color: #ECB176;
+    --light-color: #FED8B1;
+    --radius: 30px;
+    --hover-shadow: rgba(0, 0, 0, 0.15); /* ظل عند التمرير */
+
+    }
+    
+    @font-face
+    {
+    font-family:'thuluth';src: url('./fonts/thuluth.eot');src: local('ثلث مزخرف'), local('thuluth-decorated'),
+    url('./fonts/thuluth-decorated.woff') format('woff');
+    }
+    
+    *{
+    scroll-behavior: smooth;
+    }
+    
+    /*** Main Section ***/
+    
+    .main .container
+    {
+    min-height: 70vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    }
+    .main .title
+    {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    flex-direction: column;
+    text-align: center;
+    }
+    .main .title h2
+    {
+    font-size: 60px;
+    }
+    
+    .title .btn
+    {
+    color: white;
+    }
+
+    
+.azkar-list {
+    padding: 2rem;
+    margin: 1rem auto;
+}
+
+.card-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+    margin: 1rem auto;
+}
+
+.card {
+    background-color: #fff;
+    border: none;
+    border-radius: 15px; /* زوايا مستديرة أكثر */
+    padding: 2rem;
+    width: 280px;
+    box-shadow: 0 10px 20px var(--hover-shadow); /* ظل ناعم */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    text-align: right;
+    opacity: 0;
+    transform: translateY(30px);
+    cursor: pointer;
+}
+
+.card:hover {
+    transform: translateY(-10px); /* تأثير عند التمرير */
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
+}
+
+.card.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.card h2 {
+    font-size: 1.5rem;
+    color: var(--main-green);
+    margin-bottom: 1rem;
+    transition: color 0.3s ease; /* تأثير انتقال اللون */
+}
+
+
+.card h4 {
+    font-size: 1.1rem;
+    color: white;
+    font-weight: 100;
+}
+
+.card p {
+    font-size: 1rem;
+    color: var(--third-color);
+}
+
+
+.card .count {
+    font-size: 0.9rem;
+    color: #dfdfdf;
+    margin-top: 1rem;
+}
+
+@media (max-width: 600px) {
+    .card {
+        width: 90%; /* عرض البطاقة للأجهزة الصغيرة */
+        margin-bottom: 20px;
+    }
+
+    h1 {
+        font-size: 2rem; /* تقليل حجم الخط على الشاشات الصغيرة */
+    }
+
+    .azkar-list h2 {
+        font-size: 1.5rem;
+    }
+}
+
+nav {
+    padding: 0.5rem;
+    text-align: center;
+}
+
+nav ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+nav ul li {
+    display: inline; /* عرض العناصر بشكل أفقي */
+    margin: 0 15px; /* إضافة مسافة بين العناصر */
+}
+
+nav ul li a {
+    text-decoration: none; /* إزالة الخط الافتراضي */
+    color: #6F4E37; /* لون النص */
+    padding: 10px; /* إضافة مسافة حول النص */
+    position: relative; /* لجعل الخط يظهر تحت النص */
+    transition: color 0.3s ease; /* تأثير انتقال اللون */
+    border-radius: var(--radius);
+}
+
+nav ul li a:hover {
+    color: var(--second-color); /* تغيير اللون عند التمرير */
+}
+
+
+nav ul li a.active {
+    background-color: #6F4E37; /* لون الخط */
+    color: white;
+}

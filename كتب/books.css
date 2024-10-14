@@ -1,0 +1,154 @@
+:root{
+--primary-color: #6F4E37;
+--second-color: #A67B5B;
+--third-color: #ECB176;
+--light-color: #FED8B1;
+--radius: 30px;
+}
+
+@font-face
+{
+font-family:'thuluth';src: url('./fonts/thuluth.eot');src: local('ثلث مزخرف'), local('thuluth-decorated'),
+url('./fonts/thuluth-decorated.woff') format('woff');
+}
+
+*{
+scroll-behavior: smooth;
+}
+
+/*** Main Section ***/
+
+.main .container
+{
+min-height: 70vh;
+display: flex;
+justify-content: center;
+align-items: center;
+}
+.main .title
+{
+display: flex;
+justify-content: center;
+align-items: center;
+position: absolute;
+flex-direction: column;
+text-align: center;
+}
+.main .title h2
+{
+font-size: 60px;
+}
+
+.title .btn
+{
+color: white;
+}
+
+#book-list {
+display: flex;
+flex-wrap: wrap;
+justify-content: center;
+align-items: center;
+}
+
+.section{
+padding: 0 80px;
+}
+
+#searchInput{
+    outline: none;
+    border: none;
+    padding: 10px 5px;
+    width: 50%;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.1), 0 6px 20px 0 rgba(0, 0, 0, 0.1);
+
+}
+
+#searchButton{
+    border: none;
+    padding: 20px 15px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.1), 0 6px 20px 0 rgba(0, 0, 0, 0.1);
+    background-color: white;
+    border-radius: 10px;
+}
+.search{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+  margin: 10px 0;
+}
+.loading-spinner img{
+    width: 300px;
+    border-radius: 50%;
+    margin-top: 20px;
+}
+
+.books{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.book {
+background: url(../images/cover.png);
+border: 6px solid var(--primary-color);
+border-radius: 5px;
+margin: 10px;
+width: 350px;
+height: 500px;
+background-size: cover;
+display: flex;
+justify-content: center;
+align-items: center;
+flex-direction: column;
+border-radius: 10px;
+padding: 0 40px;
+transition: all .4s ease-in-out;
+}
+.book h2 {
+color: white;
+font-weight: 200;
+word-wrap: break-word;
+text-align: center;
+}
+
+.book p {
+font-size: 0.7em;
+margin: 20px 0;
+color: var(--light-color);
+text-align: center;
+}
+.book .btn{
+border: 2px  solid var(--light-color);
+background: transparent;
+border-radius: var(--radius);
+font-size: 16px;
+font-weight: 400;
+transition: .3s all ease-in-out;
+padding: 5px 26px;
+cursor: pointer;
+color: white;
+}
+
+.pagination {
+text-align: center;
+margin-top: 20px;
+}
+
+.pagination button {
+margin: 10px 5px;
+padding: 10px 15px;
+background: var(--primary-color);
+color: white;
+border: none;
+border-radius: 5px;
+cursor: pointer;
+}
+
+.pagination button:disabled {
+background: #ccc;
+}

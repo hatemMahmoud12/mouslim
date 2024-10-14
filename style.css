@@ -1,0 +1,1053 @@
+@font-face
+{
+    font-family:'thuluth-decorated';src: url('./fonts/thuluth-decorated.eot');src: local('ثلث مزخرف'), local('thuluth-decorated'),
+    url('./fonts/thuluth-decorated.woff') format('woff');
+}
+@font-face
+{
+    font-family:'cairo-bold';src: url('./fonts/cairo-bold.eot');src: local('القاهرة ثقيل'), local('cairo-bold'),url('./fonts/cairo-bold.woff') format('woff');
+}
+
+
+@import url("https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;600;700&family=Markazi+Text:wght@400;600;700&family=Poppins:wght@400;600;700&display=swap");
+@font-face {
+  font-family: 'Uthman Naskh';
+  src: local("KFGQPC Uthman Taha Naskh"), url(https://cdn.rawgit.com/mustafa0x/qpc-fonts/f93bf5f3/various-woff2/UthmanTN1%20Ver10.woff2) format("woff2"), url(https://cdn.rawgit.com/mustafa0x/qpc-fonts/f93bf5f3/various-woff/UthmanTN1%20Ver10.woff) format("woff");
+}
+
+
+@media screen and (min-width: 968px) {
+    :root {
+      --big-font-size: 1.75rem;
+      --normal-font-size: 1rem;
+      --heading-font: 'Poppins', sans-serif;
+      --arabic-font: 'Uthman Naskh','Markazi Text', serif;
+    }
+  }
+
+*
+{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family:'cairo-bold';
+    outline: none;
+    text-decoration: none;
+    list-style: none;
+}
+:root{
+    --primary-color: #6F4E37;
+    --second-color: #A67B5B;
+    --third-color: #ECB176;
+    --light-color: #FED8B1;
+    --radius: 30px;
+}
+::-webkit-scrollbar
+{
+    width: 0;
+}
+*{
+    scroll-behavior: smooth;
+}
+body
+{
+    direction: rtl;
+    scroll-behavior: smooth;
+}
+ul,li
+{
+    list-style: none;
+}
+.container
+{
+    max-width: 1450px;
+    width: 100%;
+    margin: 0 auto;
+    position: relative;
+    padding: 0 10px;
+}
+section
+{
+    padding: 70px 0;
+}
+section h3
+{
+    font-size: 30px;
+    text-align: center;
+    color: var(--primary-color);
+    margin-bottom: 50px;
+    position: relative;
+}
+section h3::after,
+section h3::before
+{
+    content: "";
+    position: absolute;
+    background-color: var(--primary-color);
+    height: 2px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+section h3::after
+{
+    width: 50px;
+    bottom: -10px;
+}
+section h3::before
+{
+    width: 100px;
+    bottom: 0px;
+}
+#mobile{
+    display: none;
+}
+/*** Header  **/
+.header
+{
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 998;
+    transition: .5s all ease-in-out;
+    padding: 7px 0;
+}
+.header .container
+{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 70px;
+    color: #fff;
+    transition: .5s all ease-in-out;
+}
+.header.active
+{
+    background-color: rgba(111,78,55,.6);
+}
+.header.active .container
+{
+    height: 80px;
+}
+.header ul
+{
+    display: flex;
+    color: white;
+}
+.header ul li a
+{
+    position: relative;
+    cursor: pointer;
+    color: white;
+}
+.header ul li a::after
+{   
+    content: "";
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    background-color: var(--light-color);
+    height: 2px; 
+    transition: .3s all ease-in-out;
+    width: 0;
+    color: white;
+}
+.header li a.active{
+    color: var(--light-color);
+}
+.header li a:hover{
+    color: var(--light-color);
+}
+.header li a.active::after,
+.header li a:hover::after
+{
+    width: 100%;
+}
+.header .bars
+{
+    display: none;
+}
+.header li:not(:first-of-type),
+.header li:not(:last-of-type)
+{
+    margin: 0 15px;
+}
+.header .logo
+{
+    font-family: 'thuluth-decorated';
+    font-size: 40px;
+}
+/**-* Main Section ***/
+.main
+{
+    background: linear-gradient(to left, rgba(111,78,55,0.8) 30%, rgba(0,212,255,0) 100%),
+    url('./images/1.jpg') center center/cover no-repeat;
+    padding: 0;
+}
+.main .container
+{
+    min-height: 100vh;
+}
+.main .title
+{
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #fff;
+}
+.main .title h2
+{
+    line-height: 1.9;
+    font-size: 40px;
+}
+.main .title p
+{
+    color: #FED8B1;
+    margin: 20px 0;
+    line-height: 1.9;
+}
+.title .btn
+{
+    border: 2px  solid var(--light-color);
+    background: transparent;
+    border-radius: var(--radius);
+    font-size: 20px;
+    font-weight: 400;
+    color: inherit;
+    display: flex;
+    align-items: center;
+    position: relative;
+    transition: .3s all ease-in-out;
+    padding: 5px 15px;
+    cursor: pointer;
+}
+.title .btn svg,
+.title .btn i,
+.title .btn .svg:not(:root).svg-inline--fa,
+.title .btn .svg-inline--fa.fa-w-6
+{
+    font-size: 25px;
+    margin-right: 20px;
+}
+.title .btn::after
+{
+    content: "";
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 0;
+    height: 100%;
+    transition: .3s all ease-in-out;
+    background-color: var(--light-color);
+    z-index: -1; 
+    border-radius: var(--radius);
+
+}
+.title .btn:hover
+{
+    color: #232323;
+}
+.title .btn:hover::after
+{
+    width: 100%;
+}
+.card{
+    background-color: white;
+    margin: 20px 0;
+    border-radius: var(--radius);
+    padding: 10px;
+    background: linear-gradient(to left, rgba(111,78,55,0.9) 100%, rgba(0,212,255,0) 100%),
+    url('./images/banner.jpg') center center/cover no-repeat;
+}
+.card .salah{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 2px 4px;
+}
+.card .salah h2{
+    color: var(--light-color);
+    font-size: 14px;
+}
+.card .salah p{
+    margin: 0;
+    color: white;
+}
+
+/** aya **/
+.modal-main{
+  height: 100vh;
+  display: grid;
+  place-items: center;
+}
+
+
+.modal__container{
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: rgba(111, 78, 58, .8);
+  width: 100%;
+  height: 100vh;
+  display: grid;
+  align-items: flex-end;
+  overflow: hidden;
+  transition: all .3s;
+  z-index: 999;
+  visibility: hidden;
+  opacity: 0;
+
+}
+
+.modal__content{
+  position: relative;
+  background: linear-gradient(to left, rgba(255,255,255,0.8) 100%, rgba(0,212,255,0) 100%),url("./images/banner.jpg");
+  text-align: center;
+  padding: 3rem 2rem 2rem;
+  border-radius: var(--radius);
+  transition: all .3s;
+  transform: translateY(10%);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  margin: 20px;
+  z-index: 997;
+
+}
+
+
+.modal__close{
+  display: inline-flex;
+  background-color: rgb(111, 78, 55);
+  border-radius: var(--radius);
+  color: #FFF;
+  font-size: 1.5rem;
+  position: absolute;
+  top: 2rem;
+  right: 2rem;
+  cursor: pointer;
+}
+
+.modal__button-width{
+  width: 90%;
+}
+
+/* Show modal */
+.show-modal{
+  visibility: visible;
+  opacity: 1;
+}
+
+.show-modal .modal__content{
+  transform: translateY(0);
+}
+
+
+a,
+span {
+  display: inline-block;
+}
+
+ .buttons .btn-play, .btn-generate {
+  font-size: 16px;
+  padding: .3rem 0.75rem;
+  border-radius: var(--radius);
+  font-family: var(--heading-font);
+  transition: .2s;
+}
+
+.btn-play,
+.arabic-ayah,
+.sura-info {
+  margin-top: 20px;
+}
+ .arabic-ayah {
+  font-family: var(--arabic-font);
+  font-weight: 600;
+}
+
+ .sura-info {
+  font-family: var(--arabic-font);
+  font-weight: bold;
+}
+
+ .buttons .btn-play {
+  background: rgb(111, 78, 55);
+  color: #FFF;
+  font-family:'cairo-bold';
+  font-size: 16px;
+  padding: 4px 8px;
+  border-radius: var(--radius);
+}
+
+ .buttons .btn-play:hover {
+  box-shadow: 0px 0px 5px 0px rgba(28, 28, 28, 0.3);
+}
+
+.btn-generate {
+  background: var(--second-color);
+  color: white;
+  box-shadow: 0px 0px 10px 0px rgba(28, 28, 28, 0.3);
+  font-family:'cairo-bold';
+  font-size: 16px;
+  padding: 4px 8px;
+  margin-right: 5px;
+  border-radius: var(--radius);
+}
+
+.close-modal{
+    font-size: 20px;
+    padding: 4px;
+    border-radius: var(--radius);
+}
+
+/*** Pop up *****/
+.surah-popup
+{
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 2;
+    background-color: #fff;
+    overflow-y: scroll;
+    transform: translateX(100%);
+}
+.surah-popup.active
+{
+    transform: translateX(0);
+    transition: .7s transform ease-in-out;
+}
+.surah-popup::-webkit-scrollbar
+{
+    width: 10px;
+    background-color: #fff;
+}
+.surah-popup::-webkit-scrollbar-thumb
+{
+    background-color: var(--primary-color);
+}
+.close-popup
+{
+    position: sticky;
+    top: 5px;
+    right: 5px;
+    width: 40px;
+    height: 40px;
+    box-shadow: 0 0 4px rgba(0,0,0,.6);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 23px;
+    color: #121212;
+    cursor: pointer;
+}
+.surah-popup .ayat
+{
+    padding: 20px;
+    width: calc(100% - 40px);
+    margin-top: 20px;
+    margin-right: 40px;
+    color: #121212;
+    text-align: center;
+}
+.surah-popup .ayat p
+{
+    line-height: 2;
+    width: 100%;
+    border-bottom: 2px solid var(--primary-color);
+}
+
+/** pages **/
+
+.pages{
+    padding: 40px;
+}
+
+.pages .cards{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    border-radius: var(--radius);
+}
+.pages .cards .card{
+    background: linear-gradient(to left, rgba(111,78,55,0.9) 100%, rgba(0,212,255,0) 100%),
+    url('./images/banner.jpg') center center/cover no-repeat;    margin: 10px;
+    padding: 10px;
+    border-radius: var(--radius);
+    text-align: center;
+    color: white;
+    width: 200px;
+    height: 200px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    cursor: pointer;
+    transform: rotate(20deg);
+    transition: .3s all ease-in-out;
+}
+.pages .cards .card:hover{
+    transform: rotate(10deg);
+}
+.pages .cards .card img{
+    width: 150px;
+    height: 150px;
+}
+  
+
+/*** Hadith Section ***/
+.hadithContainer
+{
+    min-height: 350px;
+    position: relative;
+    color: #232323;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 50px 20px;
+    border: solid 5px var(--primary-color);
+    border-radius: var(--radius);
+    background: linear-gradient(to left, rgba(255,255,255,0.8) 100%, rgba(0,212,255,0) 100%),url("./images/banner.jpg");
+}
+
+.hadith .buttons
+{
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+.hadith .buttons div
+{
+    background: rgb(111, 78, 55);
+    box-shadow: 0 4px 20px 0 rgba(0,0,0,.14) , 0 7px 10px -5px rgba(111,78,55,.4);
+    color: #fff;
+    padding: 10px 20px;
+    cursor: pointer;
+    height: 50px;
+    border-radius: var(--radius);
+
+}
+.hadith .buttons .number
+{
+    color: var(--primary-color);
+    background: transparent;
+    padding: 10px 20px;
+    box-shadow: 0 4px 20px 0 rgba(0,0,0,.14), 0 7px 10px -5px rgba(111,78,55,.4);
+    width: 100px;
+    text-align: center;
+    height: 50px;
+    font-size: 14px;
+    margin-left: 10px;
+}
+.hadith .midlle{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.hadith .books{
+    box-shadow: 0 4px 20px 0 rgba(0,0,0,.14), 0 7px 10px -5px rgba(111,78,55,.4);
+    padding: 10px 20px;
+    color: var(--primary-color);
+    background: transparent;
+    border: none;
+    border-radius: var(--radius);
+    cursor: pointer;
+    width: 100px;
+    font-size: 14px;
+    height: 50px;
+    margin-left: 10px;
+    margin-top: 10px;
+}
+/**** Lectures Section ****/
+
+
+.lectures-container {
+    display: flex;
+    width: 100%;
+    border-radius: 10px;
+    padding: 10px;
+}
+
+/* الجهة اليمنى */
+.right {
+    flex: 1;
+    padding: 10px;
+    overflow-y: auto; /* Allows scrolling if there are many main lectures */
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+/* الجهة اليسرى مع خاصية sticky */
+.left {
+    flex: 2;
+    padding: 10px;
+    display: flex;
+    flex-direction: column; /* ترتيب العناصر عمودياً */
+    border-radius: 10px;
+    margin: 0 10px;
+    position: sticky; /* لجعل القسم ثابت */
+    top: 20px; /* تحديد المكان الثابت */
+    height: fit-content; /* إضافة هذا لجعل القسم يتكيف مع محتواه */
+}
+
+
+#mainLectureList,
+#subLectureList {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+#mainLectureList li,
+#subLectureList li {
+    padding: 20px;
+    border-radius: 10px;
+    border-bottom: 1px solid #ddd;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    text-align: right;
+    margin: 10px 0;
+    background-color: #6F4E37;
+    color: white;
+}
+
+#mainLectureList li:hover,
+#subLectureList li:hover {
+    background-color: #A67B5B;
+}
+
+#loadMoreButton{
+    background: #f0f0f0;
+    outline: none;
+    border-radius: 10px;
+    padding: 8px 20px;
+    cursor: pointer;
+    border: 1px solid #ddd;
+    color: #121212;
+}
+
+#loadMoreButton:hover {
+    background-color: #e0e0e0;
+}
+
+video {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+    margin-bottom: 40px; /* Spacing below video */
+}
+
+#subLectureList {
+    list-style-type: decimal;
+    direction: rtl;
+    margin-top: 10px;
+}
+
+#subLectureList li::marker {
+    font-size: 18px;
+    color: #333;
+}
+
+
+/* أسلوب التقسيم لشاشات الكمبيوتر */
+.lectures-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+/* تنسيق الفيديو */
+#videoPlayer {
+    width: 100%;
+    height: auto;
+    margin-bottom: 10px;
+}
+
+/* تنسيق مربع البحث */
+#searchBox {
+    width: 100%;
+    padding: 20px;
+    margin-bottom: 10px;
+}
+
+/* أسلوب العرض لشاشات الجوال */
+@media (max-width: 768px) {
+    .lectures-container {
+        flex-direction: column;
+    }
+
+    /* الفيديو في أعلى الصفحة */
+    .left {
+        order: 1;
+        width: 100%;
+        margin: 0;
+        position: relative; /* لجعلها غير ثابتة على الشاشات الصغيرة */
+    }
+
+    /* قائمة الفيديوهات الفرعية أسفل الفيديو */
+    #subLectureList {
+        margin-top: 10px;
+    }
+
+    /* المحاضرات الرئيسية أسفل القائمة الفرعية */
+    .right {
+        order: 2;
+        width: 100%;
+        margin-top: 20px;
+    }
+}
+
+.subLectureDropdown {
+    margin-top: 10px;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    overflow: hidden; /* لحصر المحتوى */
+}
+
+.dropdown-header {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+    background-color: #f0f0f0;
+    cursor: pointer;
+}
+
+.dropdown-header:hover {
+    background-color: #e0e0e0;
+}
+
+#subLectureList.hidden {
+    display: none; /* إخفاء القائمة عند الحاجة */
+}
+
+#subLectureList {
+    padding: 0;
+    margin: 0;
+    list-style-type: none;
+}
+
+#subLectureList li {
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+    text-align: right;
+    cursor: pointer;
+}
+
+#subLectureList li:hover {
+    background-color: #f9f9f9;
+}
+
+
+
+
+/** radio **/
+.radio .container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}  
+
+  .player {
+    background-color: var(--primary-color);
+    background: linear-gradient(to left, rgba(111,78,55,0.9) 100%, rgba(0,212,255,0) 100%),
+    url('./images/banner.jpg') center center/cover no-repeat;
+    padding: 28px;
+    border-radius: var(--radius);
+    width: 50rem;
+  }
+  
+  .player img {
+    width: 200px;
+    height: 200px;
+    object-fit: cover;
+    border-radius: var(--radius);
+  }
+  
+  
+  .info {
+   color: #E1E1E6;
+  }
+  
+  .info p {
+    opacity: 0.68;
+    font-size: 19px;
+  }
+  
+  .info-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+  }
+  
+  .player h1 {
+    font-size: 27px;
+    color: #E1E1E6;
+    padding-bottom: 7px;
+  }
+  
+  
+  .controls {
+    display: flex;
+    justify-content: space-between;
+    padding-top: 20px;
+  }
+  
+  .track {
+    padding-top: 28px;
+   position: relative;
+  }
+  
+  .track::before {
+  content: '';
+  height: 6px;
+  width: 100%;
+  display: block;
+  background: #D9D9D9;
+  opacity: 0.3;
+  border-radius: var(--radius);
+  position: absolute;
+  }
+  
+  .track::after { 
+    content: '';
+  height: 6px;
+  width: 85%;
+  display: block;
+  background: #D9D9D9;
+  border-radius: var(--radius);
+  }
+
+  .controls{
+    color: white;
+}
+.controls .btn{
+  cursor: pointer;
+  font-size: 24px;
+}
+
+/*** Footer **/
+.footer
+{
+    padding: 0;
+}
+.footer svg
+{
+    fill: var(--primary-color);
+    transform: translateY(10px);
+}
+.footer .social
+{
+    display: flex;
+    align-items: center;
+    justify-content:center ;
+    background-color: var(--primary-color);
+}
+.footer .social a
+{
+    margin: 15px ;
+    font-size: 35px;
+    color: #fff;
+}
+.footer-text{
+    background: #6F4E37;
+    width: 100%;
+    text-align: center;
+    color: white;
+    padding: 20px;
+}
+.footer-text a{
+    color: #A67B5B;
+}
+/*** Scroll Btn ***/
+.scrollBtn
+{
+    position: fixed;
+    bottom: 0;
+    right: 20px;
+    color: #fff;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--primary-color);
+    border-radius: var(--radius);
+    font-size: 25px;
+    transition:  1s bottom ease-in-out;
+    bottom: -50px;
+}
+.scrollBtn.active
+{
+    bottom: 20px;
+}
+/*** Responsive ***/
+
+
+@media (max-width : 1024px)
+{
+    .header .bars
+    {
+        display: block;
+        font-size: 25px;
+    }
+    .header ul
+    {
+        position: absolute;
+        left: 0;
+        top: 80px;
+        width: 220px;
+        background-color: rgba(0,0,0,.6);
+        flex-direction: column;
+        padding: 0 50px;
+        text-align: center;
+        transform: translateX(-100%);
+        transition: .7s transform ease-in-out;
+    }
+    .header ul.active
+    {
+        transform: translateX(0);
+    }
+    .header li:not(:first-of-type), 
+    .header li:not(:last-of-type)
+    {
+        margin: 15px 0;
+    }
+}
+
+@media (max-width: 670px) {
+    #mobile{
+        display: flex;
+    }
+    #pc{
+        display: none;
+    }
+    .player {
+      width: 90%; /* Make player responsive */
+      padding: 20px;
+    }
+  
+    .info-wrapper {
+      flex-direction: column; /* Stack image and info vertically */
+      gap: 15px; /* Reduce gap between elements */
+    }
+  
+    .player img {
+      width: 150px; /* Reduce image size */
+      height: 150px;
+    }
+  
+    
+    #boxes {
+        display:flex;
+        flex-direction: column;
+    
+        max-width: 270px;
+        margin: auto;
+    
+    
+        height: auto;
+        padding-block: 60px;
+      }
+  }
+
+@media (max-height: 726px) {
+    .main .title .greeting{
+        font-size: 30px;
+    }
+}
+@media (max-width: 480px) {
+    #mobile{
+        display: flex;
+    }
+    #pc{
+        display: none;
+    }
+        .hadith .buttons
+        {
+            margin-top: 20px;
+        }
+        .hadith .buttons div
+        {
+
+            padding: 10px 20px;
+
+        }
+        .hadith .buttons .number
+        {
+            padding: 10px;
+
+        }
+        .hadith .midlle{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+        .hadith .books{
+            margin-right: 10px;
+            box-shadow: 0 4px 20px 0 rgba(0,0,0,.14), 0 7px 10px -5px rgba(111,78,55,.4);
+            padding: 10px 20px;
+            color: var(--primary-color);
+            background: transparent;
+            border: none;
+            border-radius: var(--radius);
+            cursor: pointer;
+        }
+
+    .player {
+      width: 80%; /* Make player responsive */
+      padding: 20px;
+    }
+    *{
+        font-size: 16px;
+    }
+
+  
+    .info-wrapper {
+      flex-direction: column; /* Stack image and info vertically */
+      gap: 15px; /* Reduce gap between elements */
+    }
+  
+    .player img {
+      width: 150px; /* Reduce image size */
+      height: 150px;
+    }
+  
+    .controls {
+        display: flex;
+        justify-content: space-between;
+    }
+    #boxes {
+        display:flex;
+        flex-direction: column;
+    
+        max-width: 270px;
+        margin: auto;
+    
+    
+        height: auto;
+        padding-block: 60px;
+      }
+  }
+
+@media screen and (min-width: 576px){
+    .modal__content{
+      margin: auto;
+      width: 380px;
+      border-radius: var(--radius);
+    }
+  
+  }
+
+
+
+
+  

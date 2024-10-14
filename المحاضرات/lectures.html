@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>الإيمان | مرئيات</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./fonts/all.min.css">
+    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="lectures.css">
+
+    	<!-- Font Awesome -->
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+	<!-- Favicon -->
+
+	<link rel="shortcut icon" href="/images/logo.png" type="image/x-icon">
+	<link rel="manifest" href="assets/favicon/site.webmanifest">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css">
+</head>
+<body>
+
+    <header class="header">
+        <div class="container">
+            <div class="logo">
+                الإيمان
+         </div>
+            <ul>
+             <li><a href="../index.html">الصَّفْحَةِ الرَّئِيسِيَّة</a></li>
+             <li><a class="active" href="./lectures.html">مرئيات</a></li>
+             <li><a href="../كتب/كتب.html">كتب</a></li>
+             <li><a href="../اذكار/azkar.html">الأذكار</a></li>
+            </ul>
+            <div class="bars">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+    </header>
+    <!-- Main Section -->
+    <section class="main">
+        <div class="container">
+            <div class="title">
+                <h2>
+                    مرئيات دينيه
+                </h2>
+                <a href="#book-list">
+                <a href="#lectures" class="btn">
+                     إبدأ التصفح
+                     <i class="fas fa-caret-left"></i>
+                </a>
+                </a>
+            </div>   
+        </div>
+    </section>
+
+    
+        <section id="lectures" class="lectures">
+            <div class="container">
+                <div class="lectures-container">
+                    <!-- الجهة اليمنى للمحاضرات الرئيسية والبحث -->
+                    <div class="right">
+                        <input type="text" id="searchBox" placeholder="ابحث عن محاضرة" oninput="searchLectures()"> <!-- Search Box -->
+                        <ul id="mainLectureList"></ul>
+                        <button id="loadMoreButton" onclick="loadMoreLectures()" class="hidden">إظهار المزيد</button> <!-- زر إظهار المزيد -->
+                    </div>
+                    <!-- الجهة اليسرى للفيديوهات وقائمة الفيديوهات الفرعية -->
+                    <div class="left">
+                        <video id="videoPlayer" width="100%" height="auto" frameborder="0" allowfullscreen controls autoplay></video>
+                        <p id="videoDescription">اختر محاضرة من القائمة.</p>
+                        
+                        <div class="subLectureDropdown">
+                            <div class="dropdown-header" onclick="toggleSubLectureList()">
+                                <span>المحاضرات الفرعية</span>
+                                <span class="arrow" id="dropdownArrow">&#9662;</span> <!-- أيقونة السهم -->
+                            </div>
+                            <ul id="subLectureList" class="hidden"></ul> <!-- قائمة المحاضرات الفرعية -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        
+    
+    
+    
+
+    <script src="lectures.js"></script>
+</body>
+</html>

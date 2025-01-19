@@ -131,23 +131,27 @@ document.getElementById('book-select').addEventListener('change', () => {
 
 // جلب الأحاديث عند تحميل الصفحة
 fetchHadith('muslim', currentPage);
-
 function getLocationByIP() {
     fetch('http://ip-api.com/json/')
         .then(response => response.json())
         .then(data => {
             const latitude = data.lat;
             const longitude = data.lon;
+
+            // استدعاء مواقيت الصلاة باستخدام الإحداثيات
             getPrayerTimes(latitude, longitude);
         })
         .catch(error => console.error('Error fetching IP location:', error));
 }
 
 function getPrayerTimes(latitude, longitude) {
+    // استخدم API مجاني مثل MuslimSalat
     fetch(`http://api.aladhan.com/v1/timings?latitude=${latitude}&longitude=${longitude}`)
         .then(response => response.json())
         .then(data => {
             const times = data.data.timings;
+
+            // عرض مواقيت الصلاة
             document.getElementById('fajr').textContent = convertTo12HourFormat(times.Fajr);
             document.getElementById('dhuhr').textContent = convertTo12HourFormat(times.Dhuhr);
             document.getElementById('asr').textContent = convertTo12HourFormat(times.Asr);
@@ -167,8 +171,9 @@ function convertTo12HourFormat(time) {
     return hours + ':' + minutes + ' ' + ampm;
 }
 
-// استدعاء الوظيفة للحصول على الموقع باستخدام IP
+// استدعاء الوظيفة لتحديد الموقع وعرض أوقات الصلاة
 getLocationByIP();
+
 
 
 let currentStationIndex = 0;

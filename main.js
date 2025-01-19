@@ -132,35 +132,31 @@ document.getElementById('book-select').addEventListener('change', () => {
 // جلب الأحاديث عند تحميل الصفحة
 fetchHadith('muslim', currentPage);
 
-function getLocation() {
-    if (navigator.geolocation) {
-        navigator.geolocation.getCurrentPosition(showPosition);
-    } else {
-        alert("الموقع الجغرافي غير مدعوم في هذا المتصفح.");
-    }
-}
-
-function showPosition(position) {
-    const latitude = position.coords.latitude;
-    const longitude = position.coords.longitude;
-
-    getPrayerTimes(latitude, longitude);
+function getLocationByIP() {
+    fetch('http://ip-api.com/json/')
+        .then(response => response.json())
+        .then(data => {
+            const latitude = data.lat;
+            const longitude = data.lon;
+            getPrayerTimes(latitude, longitude);
+        })
+        .catch(error => console.error('Error fetching IP location:', error));
 }
 
 function getPrayerTimes(latitude, longitude) {
     fetch(`http://api.aladhan.com/v1/timings?latitude=${latitude}&longitude=${longitude}`)
-    .then(response => response.json())
-    .then(data => {
-        const times = data.data.timings;
-        document.getElementById('fajr').textContent = convertTo12HourFormat(times.Fajr);
-        document.getElementById('dhuhr').textContent =  convertTo12HourFormat(times.Dhuhr);
-        document.getElementById('asr').textContent = convertTo12HourFormat(times.Asr);
-        document.getElementById('maghrib').textContent = convertTo12HourFormat(times.Maghrib);
-        document.getElementById('isha').textContent = convertTo12HourFormat(times.Isha);
+        .then(response => response.json())
+        .then(data => {
+            const times = data.data.timings;
+            document.getElementById('fajr').textContent = convertTo12HourFormat(times.Fajr);
+            document.getElementById('dhuhr').textContent = convertTo12HourFormat(times.Dhuhr);
+            document.getElementById('asr').textContent = convertTo12HourFormat(times.Asr);
+            document.getElementById('maghrib').textContent = convertTo12HourFormat(times.Maghrib);
+            document.getElementById('isha').textContent = convertTo12HourFormat(times.Isha);
 
-        document.getElementById('prayerTimes').style.display = 'block';
-    })
-    .catch(error => console.error('Error:', error));
+            document.getElementById('prayerTimes').style.display = 'block';
+        })
+        .catch(error => console.error('Error fetching prayer times:', error));
 }
 
 function convertTo12HourFormat(time) {
@@ -170,7 +166,9 @@ function convertTo12HourFormat(time) {
     hours = hours % 12 || 12; // تحويل إلى صيغة 12 ساعة
     return hours + ':' + minutes + ' ' + ampm;
 }
-getLocation()
+
+// استدعاء الوظيفة للحصول على الموقع باستخدام IP
+getLocationByIP();
 
 
 let currentStationIndex = 0;

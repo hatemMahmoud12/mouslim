@@ -181,7 +181,7 @@ section h3::before
 .main
 {
     background: linear-gradient(to left, rgba(111,78,55,0.8) 30%, rgba(0,212,255,0) 100%),
-    url('./images/1.jpg') center center/cover no-repeat;
+    url('https://r4.wallpaperflare.com/wallpaper/693/979/591/5bd3623d54f5e-wallpaper-783effa16cca19b4fa62c4b70419ce14.jpg') center center/cover no-repeat;
     padding: 0;
 }
 .main .container

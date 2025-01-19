@@ -131,7 +131,7 @@ document.getElementById('book-select').addEventListener('change', () => {
 
 // جلب الأحاديث عند تحميل الصفحة
 fetchHadith('muslim', currentPage);
-/*
+
 function getLocation() {
     if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(showPosition);
@@ -171,7 +171,7 @@ function convertTo12HourFormat(time) {
     return hours + ':' + minutes + ' ' + ampm;
 }
 getLocation()
-*/
+
 
 let currentStationIndex = 0;
 let stations = [];
